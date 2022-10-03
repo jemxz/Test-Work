@@ -7,6 +7,7 @@ async function BypassCaptha() {
     var problemSolution = '12'
 
     const browser = await puppeteer.launch({
+       // executablePath: 'C:\Users\jemxz\OneDrive\Documents\Projects\sam-upworkProject\sam-demo\sam-app\hello-world\node_modules\puppeteer\.local-chromium\win64-1036745\chrome-win\chrome.exe',
         headless: false,
         defaultViewport: null,
         args: ["--disable-notifications"]
@@ -26,7 +27,6 @@ async function BypassCaptha() {
         await page.waitFor(3000)
         await page.type("#captcha-result", problemSolution, { delay: 300 });
         await page.click('.btn.btn-secondary');
-        await page.waitForNavigation();
         await page.screenshot({path: 'captha.png'})
         console.log("Bypassing succesfull ... ");
     } catch (error) {
